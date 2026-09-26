@@ -6,6 +6,7 @@ langgraph
 langchain
 langchain-groq
 langchain-core
+langchain-google-genai
 pydantic
 pydantic-settings
 httpx
