@@ -20,9 +20,6 @@ Include the threat score for each.
 ## Opportunities
 Bullet list. Gaps the competitor leaves open.
 
-## Recommendations
-3-5 concrete action items starting with a verb (Hire, Launch, Build, etc.).
-
 Rules:
 - Include at least 3 citations (source: ...)
 - Use at least 2 action verbs in Recommendations
