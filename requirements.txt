@@ -1,0 +1,14 @@
+prompt-regression-mcp @ git+https://github.com/MadhuChitikela/prompt-regression-mcp.git
+fastmcp>=2.0
+fastapi
+uvicorn[standard]
+langgraph
+langchain
+langchain-groq
+langchain-core
+pydantic
+pydantic-settings
+httpx
+pytest
+pytest-asyncio
+python-dotenv
