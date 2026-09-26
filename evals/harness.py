@@ -21,6 +21,12 @@ if not GOLDEN_PATH.exists():
 
 async def evaluate_case(case: dict) -> dict:
     """Run a single golden case through the pipeline and grade it."""
+    from app.mcp_server import _SIGNALS_SEEN, _NEWS_STORE, _PRICING_STORE, _JOBS_STORE
+    _SIGNALS_SEEN.clear()
+    _NEWS_STORE.clear()
+    _PRICING_STORE.clear()
+    _JOBS_STORE.clear()
+
     result = await run_pipeline(case["company"])
 
     brief = result.get("brief", "")
