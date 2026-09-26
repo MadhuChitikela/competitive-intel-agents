@@ -1,8 +1,8 @@
 """Shared LangGraph state + structured output models."""
 from typing import TypedDict, Annotated
 import operator
+import os
 from pydantic import BaseModel, Field
-from langchain_groq import ChatGroq
 from app.config import settings
 
 
@@ -38,10 +38,40 @@ class BriefOutput(BaseModel):
 
 
 def get_llm():
-    import os
-    model_name = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
+    from langchain_groq import ChatGroq
+
+    gemini_key = settings.gemini_api_key or os.getenv("GEMINI_API_KEY", "")
+    groq_key = settings.groq_api_key or os.getenv("GROQ_API_KEY", "")
+    groq_model = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
+
+    # If a valid Groq key is present, use it as primary with Gemini as fallback
+    if groq_key and not groq_key.startswith("mock_"):
+        primary = ChatGroq(
+            model=groq_model,
+            api_key=groq_key,
+            temperature=0,
+        )
+        if gemini_key:
+            from langchain_google_genai import ChatGoogleGenerativeAI
+            fallback = ChatGoogleGenerativeAI(
+                model="gemini-2.5-flash",
+                google_api_key=gemini_key,
+                temperature=0,
+            )
+            return primary.with_fallbacks([fallback])
+        return primary
+
+    # If only Gemini is provided or Groq is a mock key
+    if gemini_key:
+        from langchain_google_genai import ChatGoogleGenerativeAI
+        return ChatGoogleGenerativeAI(
+            model="gemini-2.5-flash",
+            google_api_key=gemini_key,
+            temperature=0,
+        )
+
     return ChatGroq(
-        model=model_name,
-        api_key=settings.groq_api_key,
+        model=groq_model,
+        api_key=groq_key,
         temperature=0,
     )
