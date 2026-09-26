@@ -1,0 +1,67 @@
+[
+  {
+    "id": "case_001_hot_threat",
+    "company": "Acme Corp",
+    "expected_themes": ["AI expansion", "enterprise move"],
+    "expected_min_threat_score": 70,
+    "expected_sections": ["Executive Summary", "Threats", "Opportunities", "Recommendations"],
+    "rubric": {
+      "structure": true,
+      "evidence": true,
+      "actionable": true,
+      "concise": true
+    }
+  },
+  {
+    "id": "case_002_funding_signal",
+    "company": "Beta Inc",
+    "expected_themes": ["funding", "growth capital"],
+    "expected_min_threat_score": 40,
+    "expected_sections": ["Executive Summary", "Threats", "Opportunities", "Recommendations"],
+    "rubric": {
+      "structure": true,
+      "evidence": true,
+      "actionable": true,
+      "concise": true
+    }
+  },
+  {
+    "id": "case_003_hiring_signal",
+    "company": "Gamma Labs",
+    "expected_themes": ["hiring", "talent expansion"],
+    "expected_min_threat_score": 30,
+    "expected_sections": ["Executive Summary", "Threats", "Opportunities", "Recommendations"],
+    "rubric": {
+      "structure": true,
+      "evidence": true,
+      "actionable": true,
+      "concise": true
+    }
+  },
+  {
+    "id": "case_004_low_signal",
+    "company": "Delta Widgets",
+    "expected_themes": ["irrelevant"],
+    "expected_min_threat_score": 0,
+    "expected_sections": ["Executive Summary", "Threats", "Opportunities", "Recommendations"],
+    "rubric": {
+      "structure": true,
+      "evidence": true,
+      "actionable": true,
+      "concise": true
+    }
+  },
+  {
+    "id": "case_005_partnership_signal",
+    "company": "Epsilon Co",
+    "expected_themes": ["partnership", "ecosystem"],
+    "expected_min_threat_score": 40,
+    "expected_sections": ["Executive Summary", "Threats", "Opportunities", "Recommendations"],
+    "rubric": {
+      "structure": true,
+      "evidence": true,
+      "actionable": true,
+      "concise": true
+    }
+  }
+]
