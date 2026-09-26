@@ -38,8 +38,10 @@ class BriefOutput(BaseModel):
 
 
 def get_llm():
+    import os
+    model_name = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
     return ChatGroq(
-        model="llama-3.3-70b-versatile",
+        model=model_name,
         api_key=settings.groq_api_key,
         temperature=0,
     )
